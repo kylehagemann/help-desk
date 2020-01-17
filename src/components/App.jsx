@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Container, Row, Col } from "reactstrap";
 import { fetchData } from "../actions/index";
-import Users from './Users';
+import ResultsList from './ResultsList';
 
 class App extends React.Component {
 
@@ -10,10 +11,7 @@ class App extends React.Component {
   }
 
     render() {
-        const { error, loading, data } = this.props;
-        const organizations = [];
-        const tickets = [];
-        const users = [];
+        const { error, loading, collectedData } = this.props;
 
         if (error) {
             return <div>Error! {error.message}</div>;
@@ -23,49 +21,21 @@ class App extends React.Component {
             return <div>Loading...</div>;
         }
 
-        for (const property in data) {
-            console.log(property);
-            if (data[property].name === "organizations") {
-                organizations.push(data[property].data);
-            }
-            if (data[property].name === "tickets") {
-                tickets.push(data[property].data);
-            }
-            if (data[property].name === "users") {
-                users.push(data[property].data);
-            }
-        }
-
         return (
-            <div className="row">
-                <div className="col-md-4">
-                    {(organizations[0] || []).map(organization => (
-                        <li key={organization._id}>
-                            <div>{organization.name}</div>
-                        </li>
+            <Container>
+                <Row>
+                    {(collectedData || []).map(dataType => (
+                        <ResultsList key={dataType.name} id={dataType.name} results={dataType.data} />
                     ))}
-                </div>
-                <div className="col-md-4">
-                    {(tickets[0] || []).map(ticket => (
-                        <li key={ticket._id}>
-                            <div>{ticket.status}</div>
-                        </li>
-                    ))}
-                </div>
-                <div className="col-md-4">
-                    {(users[0] || []).map(user => (
-                        <li key={user._id}>
-                            <div>{user.name}</div>
-                        </li>
-                    ))}
-                </div>
-            </div>
+
+                </Row>
+            </Container>
         );
     }
 }
 
 const mapStateToProps = state => ({
-  data: state.data,
+  collectedData: state.collectedData,
   loading: state.loading,
   error: state.error
 });

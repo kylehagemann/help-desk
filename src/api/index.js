@@ -1,10 +1,9 @@
-var path = require('path');
-
 export function getData(urls) {
   return Promise.all(
     urls.map(url => fetch(url)
+      .then(checkStatus)  
       .then(
-        res => res.json()
+        response => response.json()
       )
       .then(
         data => ({ name: url.split('\\').pop().split('/').pop().split('.')[0], data })
@@ -16,6 +15,13 @@ export function getData(urls) {
   )
 }
 
+function checkStatus(response) {
+  if (response.ok) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
+}
 
 
 

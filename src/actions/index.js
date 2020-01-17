@@ -7,8 +7,8 @@ export function fetchData() {
     return async dispatch => {
         dispatch(fetchDataBegin());
         try {
-            const data = await getData(urls);
-            dispatch(fetchDataSuccess(data));
+            const collectedData = await getData(urls);
+            dispatch(fetchDataSuccess(collectedData));
         }
         catch (error) {
             return dispatch(fetchDataFailure(error));
@@ -22,9 +22,9 @@ export const fetchDataBegin = () => ({
     type: constants.FETCH_DATA_BEGIN
 });
 
-export const fetchDataSuccess = data => ({
+export const fetchDataSuccess = collectedData => ({
     type: constants.FETCH_DATA_SUCCESS,
-    payload: { data }
+    payload: { collectedData }
 });
 
 export const fetchDataFailure = error => ({

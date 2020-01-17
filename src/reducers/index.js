@@ -1,12 +1,9 @@
 import * as constants from "../constants/index";
   
 const initialState = {
-    data: [],
-    // organizations: [],
-    // tickets: [],
-    // users: [],
     loading: false,
-    error: null
+    error: null,
+    collectedData: []
 };
   
 export default function rootReducer(
@@ -29,10 +26,7 @@ switch (action.type) {
     return {
         ...state,
         loading: false,
-        data: action.payload.data,
-        // organizations: action.payload.organizations,
-        // tickets: action.payload.tickets,
-        // users: action.payload.users
+        collectedData: action.payload.collectedData
     };
 
     case constants.FETCH_DATA_FAILURE:
@@ -45,10 +39,7 @@ switch (action.type) {
         ...state,
         loading: false,
         error: action.payload.error,
-        data: []
-        // organizations: [],
-        // tickets: [],
-        // users: []
+        collectedData: []
     };
   
     default:
