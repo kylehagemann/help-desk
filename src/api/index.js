@@ -25,32 +25,10 @@ function checkStatus(response) {
 
 
 
-  // Promise.all([
-  //   fetch("http://localhost:3000/items/get"),
-  //   fetch("http://localhost:3000/contactlist/get"),
-  //   fetch("http://localhost:3000/itemgroup/get")
-  // ])
-  // .then(
-  //   handleErrors()
-  // )
-  // .then(
-  //   ([organizations, tickets, users]) => {
-  //     let res = [organizations, tickets, users]
-  //     return res.json()
-  //   }
-  // )
-  // .catch(
-  //   (err) => {
-  //     console.log(err);
-  //   }
-  // );
-
-
-
 // Handle HTTP errors since fetch won't.
-function handleErrors(response) {
-  if (!response.ok) {
-      throw Error(response.statusText);
-  }
-  return response;
-}
+// function handleErrors(response) {
+//   if (!response.ok) {
+//       throw Error(response.statusText);
+//   }
+//   return response;
+// }

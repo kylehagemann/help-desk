@@ -42,6 +42,13 @@ switch (action.type) {
         collectedData: []
     };
   
+    // case constants.SEARCH_FILTER: 
+    // return {
+    //     ...state, 
+    //     filter: action.payload.filter, 
+    //     filteredData: action.payload.filteredData
+    // };
+
     default:
         // ALWAYS have a default case in a reducer
         return state;
