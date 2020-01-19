@@ -3,7 +3,7 @@ import * as constants from "../constants/index";
 const initialState = {
     loading: false,
     error: null,
-    collectedData: []
+    parsedData: []
 };
   
 export default function rootReducer(
@@ -26,7 +26,7 @@ switch (action.type) {
     return {
         ...state,
         loading: false,
-        collectedData: action.payload.collectedData
+        parsedData: action.payload.parsedData
     };
 
     case constants.FETCH_DATA_FAILURE:
@@ -39,7 +39,20 @@ switch (action.type) {
         ...state,
         loading: false,
         error: action.payload.error,
-        collectedData: []
+        parsedData: []
+    };
+    
+    case constants.PARSE_DATA_FAILURE:
+    // The parse failed, but it did stop, so set loading to "false".
+    // Save the error, and we can display it somewhere
+    // Since it failed, we don't have items to display anymore, so set it empty.
+    // This is up to you and your app though: maybe you want to keep the items
+    // around! Do whatever seems right.
+    return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        parsedData: []
     };
   
     // case constants.SEARCH_FILTER: 

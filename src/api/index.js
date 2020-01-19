@@ -23,6 +23,23 @@ function checkStatus(response) {
   }
 }
 
+export function formatData(data) {
+  const parsedData = [];
+  data.forEach(element => {
+      parsedData.push(JSON.parse(JSON.stringify(element), replacer));
+  });
+  return parsedData;
+}
+
+function replacer(key, val) {
+  if (typeof val !== 'object') {
+    return String(val);
+  }
+  if (!val) {
+      return '';
+  }
+  return val;
+}
 
 
 // Handle HTTP errors since fetch won't.

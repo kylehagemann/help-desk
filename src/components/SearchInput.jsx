@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
 class SearchInput extends React.Component {
@@ -18,10 +19,14 @@ class SearchInput extends React.Component {
         return (
           <>
             <input value={filterVar} onChange={this.handleChange} />
-            {/* <input value={valueFilter} onChange={this.handleChange} /> */}
           </>
         );
     }
+}
+
+SearchInput.propTypes = {
+  filterVar: PropTypes.string,
+  handleChange: PropTypes.func.isRequired
 }
 
 export default SearchInput;
