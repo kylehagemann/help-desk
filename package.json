@@ -1,6 +1,6 @@
 {
   "name": "help-desk",
-  "homepage" : "http://kylehagemann.github.io/help-desk",
+  "homepage" : "https://kylehagemann.github.io/help-desk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
