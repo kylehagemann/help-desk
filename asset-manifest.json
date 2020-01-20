@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/help-desk/static/css/main.ace2fc91.chunk.css",
+    "main.js": "/help-desk/static/js/main.d14d26c1.chunk.js",
+    "main.js.map": "/help-desk/static/js/main.d14d26c1.chunk.js.map",
+    "runtime-main.js": "/help-desk/static/js/runtime-main.c230be0a.js",
+    "runtime-main.js.map": "/help-desk/static/js/runtime-main.c230be0a.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/help-desk/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.80930b8f.chunk.js": "/help-desk/static/js/2.80930b8f.chunk.js",
+    "static/js/2.80930b8f.chunk.js.map": "/help-desk/static/js/2.80930b8f.chunk.js.map",
+    "index.html": "/help-desk/index.html",
+    "precache-manifest.443a8fbaeaca87e02c0787d111216a5e.js": "/help-desk/precache-manifest.443a8fbaeaca87e02c0787d111216a5e.js",
+    "service-worker.js": "/help-desk/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/help-desk/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.ace2fc91.chunk.css.map": "/help-desk/static/css/main.ace2fc91.chunk.css.map",
+    "static/js/2.80930b8f.chunk.js.LICENSE": "/help-desk/static/js/2.80930b8f.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c230be0a.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.80930b8f.chunk.js",
+    "static/css/main.ace2fc91.chunk.css",
+    "static/js/main.d14d26c1.chunk.js"
+  ]
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["global.scss"],"names":[],"mappings":"AAAA,mBACE,sCAA+C,CAC/C,6CAAA,CAAA,qCAAuC,CAKxC,sBAGC,eAAgB","file":"main.ace2fc91.chunk.css","sourcesContent":[".result-card:hover {\n  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);\n  transition: box-shadow 0.3s ease-in-out;\n}\n\n.data-list {\n  list-style: none;\n}\n\n.card-list {\n  list-style: none;\n}\n"]}
