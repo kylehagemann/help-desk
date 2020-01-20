@@ -1,28 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Row, Col, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap';
-import * as actions from '../actions/index';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card, CardBody } from "reactstrap";
 
 class ResultCard extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          
-      }
-  }
-
   render() {
+    const { result } = this.props;
     return (
-      <li className="pl-0">
-        <Card>
+      <li className="pl-0 pb-3">
+        <Card className="result-card">
           <CardBody>
-            <CardSubtitle>Card subtitle</CardSubtitle>
-              <ul>
-                {this.props.result ? Object.entries(this.props.result).map(([key,value])=>
-                  <li key={key}>{key} : {value.toString()}</li>
-                ): 'No Results'}
-              </ul>
+            <ul className="card-list pl-0">
+              {result ? Object.entries(result).map(([key, value]) =>
+                <li key={key} arialabel="Data Group">
+                  <div className="d-inline" arialabel={key} tabIndex="0">{key}</div>:
+                  <div className="d-inline" arialabel={value} tabIndex="0"> {value.toString()}</div>
+                </li>
+              ) : <div arialabel="No Results" tabIndex="0">No Results</div>}
+            </ul>
           </CardBody>
         </Card>
       </li>
@@ -30,10 +24,8 @@ class ResultCard extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-    return {
-      ...state.app
-    }
+ResultCard.propTypes = {
+  result: PropTypes.object
 }
 
-export default connect(mapStateToProps, {...actions})(ResultCard);
+export default ResultCard;

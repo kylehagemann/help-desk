@@ -1,35 +1,29 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
 
 class Checkbox extends React.Component {
-
-
-
-    render() {
-        const { label, isSelected, onCheckboxChange } = this.props;
-        return (
-            <div className="form-check">
-            <label>
-                <input
-                    type="checkbox"
-                    name={label}
-                    checked={isSelected}
-                    onChange={onCheckboxChange}
-                    className="form-check-input"
-                    arailabel={label}
-                />
-                {label}
-                </label>
-            </div>
-        );
-    }
+	render() {
+		const { label, isSelected, onCheckboxChange } = this.props;
+		return (
+			<label className="mx-3">
+				<input
+					arialabel={label}
+					checked={isSelected}
+					className="checkbox-input mr-1"
+					name={label}
+					onChange={onCheckboxChange}
+					type="checkbox"
+				/>
+				{label}
+			</label>
+		);
+	}
 }
 
 Checkbox.propTypes = {
-    label: PropTypes.string,
-    isSelected: PropTypes.bool,
-    onCheckboxChange: PropTypes.func.isRequired
+	isSelected: PropTypes.bool.isRequired,
+	label: PropTypes.string,
+	onCheckboxChange: PropTypes.func.isRequired
 }
 
 export default Checkbox;

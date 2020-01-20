@@ -1,69 +1,47 @@
 import * as constants from "../constants/index";
-  
+
 const initialState = {
-    loading: false,
-    error: null,
-    parsedData: []
+	loading: false,
+	error: null,
+	formattedData: []
 };
-  
+
 export default function rootReducer(
-    state = initialState,
-    action
+	state = initialState,
+	action
 ) {
-switch (action.type) {
-    case constants.FETCH_DATA_BEGIN:
-    // Mark the state as "loading" so we can show a spinner or something
-    // Also, reset any errors. We're starting fresh.
-    return {
-        ...state,
-        loading: true,
-        error: null
-    };
+	switch (action.type) {
+		case constants.FETCH_DATA_BEGIN:
+			return {
+				...state,
+				loading: true,
+				error: null
+			};
 
-    case constants.FETCH_DATA_SUCCESS:
-    // All done: set loading "false".
-    // Also, replace the items with the ones from the server
-    return {
-        ...state,
-        loading: false,
-        parsedData: action.payload.parsedData
-    };
+		case constants.FETCH_DATA_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				formattedData: action.payload.formattedData
+			};
 
-    case constants.FETCH_DATA_FAILURE:
-    // The request failed, but it did stop, so set loading to "false".
-    // Save the error, and we can display it somewhere
-    // Since it failed, we don't have items to display anymore, so set it empty.
-    // This is up to you and your app though: maybe you want to keep the items
-    // around! Do whatever seems right.
-    return {
-        ...state,
-        loading: false,
-        error: action.payload.error,
-        parsedData: []
-    };
-    
-    case constants.PARSE_DATA_FAILURE:
-    // The parse failed, but it did stop, so set loading to "false".
-    // Save the error, and we can display it somewhere
-    // Since it failed, we don't have items to display anymore, so set it empty.
-    // This is up to you and your app though: maybe you want to keep the items
-    // around! Do whatever seems right.
-    return {
-        ...state,
-        loading: false,
-        error: action.payload.error,
-        parsedData: []
-    };
-  
-    // case constants.SEARCH_FILTER: 
-    // return {
-    //     ...state, 
-    //     filter: action.payload.filter, 
-    //     filteredData: action.payload.filteredData
-    // };
+		case constants.FETCH_DATA_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error,
+				formattedData: []
+			};
 
-    default:
-        // ALWAYS have a default case in a reducer
-        return state;
-    }
+		case constants.FORMAT_DATA_FAILURE:
+			return {
+				...state,
+				loading: false,
+				error: action.payload.error,
+				formattedData: []
+			};
+
+		default:
+			return state;
+	}
 }

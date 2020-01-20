@@ -1,53 +1,44 @@
-import { getData, formatData } from '../api/index';
+import { getData } from '../api/index';
+import { formatData } from '../helpers/index'
 import * as constants from '../constants/index';
+import { URLS } from "../data/index"
 
-const urls = [ 'data/organizations.json', 'data/tickets.json', 'data/users.json' ];
 let collectedData = [];
-let parsedData = [];
+let formattedData = [];
 export function fetchData() {
-    return async dispatch => {
-        dispatch(fetchDataBegin());
-        try {
-            collectedData = await getData(urls);
-            try {
-                parsedData = formatData(collectedData);
-            }
-            catch (error) {
-                return dispatch(parseDataFailure(error))
-            }
-            dispatch(fetchDataSuccess(parsedData));
-        }
-        catch (error) {
-            return dispatch(fetchDataFailure(error));
-        }
-    };
-}
+	return async dispatch => {
+		dispatch(fetchDataBegin());
+		try {
+			collectedData = await getData(URLS);
+			try {
+				formattedData = formatData(collectedData);
+			}
+			catch (error) {
+				return dispatch(formatDataFailure(error))
+			}
+			dispatch(fetchDataSuccess(formattedData));
+		}
+		catch (error) {
+			return dispatch(fetchDataFailure(error));
+		};
+	};
+};
 
 export const fetchDataBegin = () => ({
-    type: constants.FETCH_DATA_BEGIN
+	type: constants.FETCH_DATA_BEGIN
 });
 
-export const fetchDataSuccess = parsedData => ({
-    type: constants.FETCH_DATA_SUCCESS,
-    payload: { parsedData }
+export const fetchDataSuccess = formattedData => ({
+	type: constants.FETCH_DATA_SUCCESS,
+	payload: { formattedData }
 });
 
 export const fetchDataFailure = error => ({
-    type: constants.FETCH_DATA_FAILURE,
-    payload: { error }
+	type: constants.FETCH_DATA_FAILURE,
+	payload: { error }
 });
 
-export const parseDataFailure = error => ({
-    type: constants.PARSE_DATA_FAILURE,
-    payload: { error }
+export const formatDataFailure = error => ({
+	type: constants.FORMAT_DATA_FAILURE,
+	payload: { error }
 });
-
-// export const filteredItems(state) {
-//     const { items, searchText } = state.searchSimple;
-//     return items.filter((item) => item.startsWith(searchText));
-// }
-
-// export const searchFilter = filter => ({
-//     type: constants.SEARCH_FILTER,
-//     payload: { filter }
-// });
