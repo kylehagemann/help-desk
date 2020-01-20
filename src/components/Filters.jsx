@@ -23,6 +23,21 @@ class Filters extends React.Component {
     
     createCheckboxes = () => this.props.myOptions.map(this.createCheckbox);
 
+    createSearchInput = searchInput => {
+        return (
+            <SearchInput
+              label={searchInput}
+              searchValue={this.props.searchInputs[searchInput]} 
+              onSearchChange={this.props.handleSearchChange}
+              key={searchInput}
+              isRequired={this.props.isRequired}
+            />
+        );
+    }
+
+    
+    createSearchInputs = () => this.props.mySearchInputs.map(this.createSearchInput);
+
     render() {    
         return (
             <Container>
@@ -30,8 +45,7 @@ class Filters extends React.Component {
                     {this.createCheckboxes()}
                 </Row>
                 <Row>
-                    <SearchInput filterVar={this.props.filterKey} searchData={this.props.handleFilterKey} />
-                    <SearchInput filterVar={this.props.filterValue} searchData={this.props.handleFilterValue} />
+                    {this.createSearchInputs()}
                 </Row>
             </Container>
         );

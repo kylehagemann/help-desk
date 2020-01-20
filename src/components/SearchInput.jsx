@@ -3,30 +3,38 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
 class SearchInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
-  
-    handleChange(e) {
-      this.props.searchData(e.target.value);
-    }
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onSearchChange(e);
+  }
 
     render() {
-        const filterVar = this.props.filterVar;
-        // const valueFilter = this.props.valueFilter;
-
+        const { label, searchValue, isRequired } = this.props;
         return (
-          <>
-            <input value={filterVar} onChange={this.handleChange} />
-          </>
+            <label>
+                <input
+                    name={label}
+                    onChange={this.handleChange}
+                    className="search-input"
+                    arailabel={label}
+                    value={searchValue}
+                    required={isRequired}
+                />
+                {isRequired && label.includes('filter key') ? label + '*' : label}
+            </label>
         );
     }
 }
 
 SearchInput.propTypes = {
-  filterVar: PropTypes.string,
-  handleChange: PropTypes.func.isRequired
+    label: PropTypes.string,
+    searchValue: PropTypes.string,
+    isRequired: PropTypes.bool.isRequired,
+    onSearchChange: PropTypes.func.isRequired
 }
 
 export default SearchInput;

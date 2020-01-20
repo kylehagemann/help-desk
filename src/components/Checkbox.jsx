@@ -17,7 +17,7 @@ class Checkbox extends React.Component {
                     checked={isSelected}
                     onChange={onCheckboxChange}
                     className="form-check-input"
-                    araiLabel={label}
+                    arailabel={label}
                 />
                 {label}
                 </label>
